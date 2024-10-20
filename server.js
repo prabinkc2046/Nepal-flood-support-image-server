@@ -21,6 +21,14 @@ app.use(cors(corsOptions));
 
 // API endpoint to dynamically serve images by name
 app.get('/images/:imagename', (req, res) => {
+
+// Manually check the Origin header
+  const requestOrigin = req.get('Origin');
+  if (requestOrigin && requestOrigin !== allowedOrigin) {
+    return res.status(403).json({ message: 'Forbidden: Invalid origin', status: 'fail' });
+  }
+
+
   const imagename = req.params.imagename; // Get image name from URL
 
   // Ensure imagename does not contain malicious characters like "../"
