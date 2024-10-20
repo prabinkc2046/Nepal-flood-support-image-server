@@ -12,7 +12,7 @@ const app = express();
 
 // Set up CORS to allow only from the domain specified in the environment variable
 const corsOptions = {
-  origin: process.env.CORS_ALLOWED_ORIGIN || '*', // Use env variable for origin, fallback to *
+  origin: process.env.CORS_ALLOWED_ORIGIN, // Use env variable for origin, fallback to *
   optionsSuccessStatus: 200, // Some legacy browsers choke on 204
 };
 
